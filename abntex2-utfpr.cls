@@ -31,6 +31,8 @@
 
 
 \RequirePackage{amsthm}
+\RequirePackage{tikz}
+\RequirePackage{epstopdf}%
 
 % Comandos auxiliares
 \newcommand{\showfont}{%
@@ -149,11 +151,24 @@
 \DeclareFixedFont{\ArialDoze}{T1}{ptm}{m}{n}{12pt} % TEX extended text - ptm - Adobe Times	
 \DeclareFixedFont{\ArialCatorzeBold}{T1}{ptm}{bx}{n}{14pt} % TEX extended text - ptm - Adobe Times	
 \DeclareFixedFont{\ArialDozeBold}{T1}{ptm}{bx}{n}{12pt} % TEX extended text - ptm - Adobe Times	
-
+\DeclareFixedFont{\ArialDezoitoBold}{T1}{ptm}{bx}{n}{18pt} % TEX extended text - ptm - Adobe Times	
+\DeclareFixedFont{\ArialDezeseisBold}{T1}{ptm}{bx}{n}{16pt} % TEX extended text - ptm - Adobe Times	
 
 % -----------------------------------------------------------------------------
 % Comandos de dados
 % -----------------------------------------------------------------------------
+
+% Comandos de dados - Autor A
+\providecommand{\imprimirautorA}{}
+\newcommand{\autorA}[1]{\renewcommand{\imprimirautorA}{#1}}
+
+% Comandos de dados - Autor B
+\providecommand{\imprimirautorB}{}
+\newcommand{\autorB}[1]{\renewcommand{\imprimirautorB}{#1}}
+
+% Comandos de dados - Autor C
+\providecommand{\imprimirautorC}{}
+\newcommand{\autorC}[1]{\renewcommand{\imprimirautorC}{#1}}
 
 % Comandos de dados - Departamento
 \providecommand{\imprimirdepartamento}{}
@@ -163,15 +178,15 @@
 \providecommand{\imprimirprograma}{}
 \newcommand{\programa}[1]{\renewcommand{\imprimirprograma}{#1}}
 
-% Comandos de dados - Sigla Instituição
+% Comandos de dados - Sigla da Instituição
 \providecommand{\imprimirsiglainstituicao}{}
 \newcommand{\siglainstituicao}[1]{\renewcommand{\imprimirsiglainstituicao}{#1}}
 
-% Comandos de dados - Sigla Departamento
+% Comandos de dados - Sigla do Departamento
 \providecommand{\imprimirsigladepartamento}{}
 \newcommand{\sigladepartamento}[1]{\renewcommand{\imprimirsigladepartamento}{#1}}
 
-% Comandos de dados - Programa
+% Comandos de dados - Sigla do Programa
 \providecommand{\imprimirsiglaprograma}{}
 \newcommand{\siglaprograma}[1]{\renewcommand{\imprimirsiglaprograma}{#1}}
 
@@ -221,55 +236,6 @@
 % Comandos de dados - Logomarca da instituição
 \providecommand{\imprimirlogoinstituicao}{}
 \newcommand{\logoinstituicao}[2]{\renewcommand{\imprimirlogoinstituicao}{\includegraphics[width={#1}\textwidth]{#2}}}
-
-
-
-
-
-% -----------------------------------------------------------------------------
-% Capa
-% -----------------------------------------------------------------------------
-\makeatletter
-\newcommand{\imprimircapautfpr}{
-    \begin{capa}
-        \begin{center}
-		\begin{SingleSpacing}
-            		\large\MakeUppercase{\imprimirinstituicao} \\
-	    		\abntex@ifnotempty{\imprimirdepartamento}
-            		{
-                		\MakeUppercase{\imprimirdepartamento} \\
-            		}
-           		\large\MakeUppercase{\imprimirprograma} \\
-		\end{SingleSpacing}
-        \end{center}
-        \vspace{60pt}
-	\begin{center}
-		\large\MakeUppercase{\imprimirautor}\\
-	\end{center}
-	\vspace{120pt}
-        \begin{center}
-            \ABNTEXchapterfont\large\MakeUppercase{\imprimirtitulo}
-            \abntex@ifnotempty{\imprimirsubtitulo}
-	    {%
-                {\ABNTEXchapterfont: }{\large{\imprimirsubtitulo}}
-            }
-        \end{center}
-	\vspace{120pt}
-	\begin{center}
-		\large\MakeUppercase{\imprimirtipotrabalho}
-	\end{center}
-	\vfill
-        \begin{center}
-		\begin{SingleSpacing}
-            		\large\MakeUppercase{\imprimirlocal}\\
-            		\large\MakeUppercase{\imprimirdata}
-		\end{SingleSpacing}
-    	\end{center}
-
-    \end{capa}
-
-}
-\makeatother
 
 
 
@@ -332,35 +298,154 @@
 
 % ---
 % Impressão da Capa
-\renewcommand{\imprimircapa}{%
+\newcommand{\imprimircapaPOS}{%
 	\begin{capa}%
+	\tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{Capa/CapaBackGround}};
+	\color{white}
+	\vspace{-5em}
 		\center
 		%\showfont		
-		\ArialDozeBold\MakeUppercase{\imprimirinstituicao}\vspace{0.5em}
+		\ArialDezeseisBold{\MakeUppercase{\imprimirinstituicao}}\vspace{0.5em}
 		
-		\ArialDozeBold\MakeUppercase{\imprimirdepartamento} \vspace{0.5em}
+		\ArialDezeseisBold\MakeUppercase{\imprimirdepartamento} \vspace{0.5em}
 		
-		\ArialDozeBold\MakeUppercase{\imprimirprograma}
+		\ArialDezeseisBold\MakeUppercase{\imprimirprograma}
 				
 		\vfill
 				
-		\ArialDozeBold\MakeUppercase{\imprimirautor}
+		\ArialDezeseisBold\MakeUppercase{\imprimirautor}
 		
 		%\justshowfont
 				
 		\vfill
-		\ArialCatorzeBold\MakeUppercase{\imprimirtitulo}
+		\ArialDezoitoBold\MakeUppercase{\imprimirtitulo}
 		\vfill
 		%\justshowfont
-		\ArialDozeBold\MakeUppercase{\imprimirtipotrabalho}
+		\ArialDezeseisBold\MakeUppercase{\imprimirtipotrabalho}
 				
 		\vfill
 		%\justshowfont
-		\ArialDozeBold\MakeUppercase{\imprimirlocal}
+		\ArialDezeseisBold\MakeUppercase{\imprimirlocal}
 				
-		\ArialDozeBold\MakeUppercase{\imprimirdata}
+		\ArialDezeseisBold\MakeUppercase{\imprimirdata}
+				
+	\end{capa}
+}
+% ---
+
+
+% ---
+% Impressão da Capa
+\newcommand{\imprimircapaPOSnoBack}{%
+	\begin{capa}%
+	\vspace{-5em}
+		\center
+		%\showfont		
+		\ArialDezeseisBold{\MakeUppercase{\imprimirinstituicao}}\vspace{0.5em}
+		
+		\ArialDezeseisBold\MakeUppercase{\imprimirdepartamento} \vspace{0.5em}
+		
+		\ArialDezeseisBold\MakeUppercase{\imprimirprograma}
+				
+		\vfill
+				
+		\ArialDezeseisBold\MakeUppercase{\imprimirautor}
+		
+		%\justshowfont
+				
+		\vfill
+		\ArialDezoitoBold\MakeUppercase{\imprimirtitulo}
+		\vfill
+		%\justshowfont
+		\ArialDezeseisBold\MakeUppercase{\imprimirtipotrabalho}
+				
+		\vfill
+		%\justshowfont
+		\ArialDezeseisBold\MakeUppercase{\imprimirlocal}
+				
+		\ArialDezeseisBold\MakeUppercase{\imprimirdata}
 				
 		\vspace*{1cm}
+	\end{capa}
+}
+% ---
+
+% ---
+% Impressão da Capa
+\newcommand{\imprimircapaGRAD}{%
+	\begin{capa}%
+	\tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{Capa/CapaGraduacaoBackground}};
+	\vspace{-5em}
+		\center
+		%\showfont		
+		\ArialDezeseisBold{\MakeUppercase{\imprimirinstituicao}}\vspace{0.5em}
+		
+		\ArialDezeseisBold\MakeUppercase{\imprimirdepartamento} \vspace{0.5em}
+		
+		\ArialDezeseisBold\MakeUppercase{\imprimirprograma}
+				
+		\vfill
+				
+		\ArialDezeseisBold\MakeUppercase{\imprimirautorA}\vspace{0.5em}
+		
+		\ArialDezeseisBold\MakeUppercase{\imprimirautorB}\vspace{0.5em}
+		
+		\ArialDezeseisBold\MakeUppercase{\imprimirautorC}
+		
+		%\justshowfont
+				
+		\vfill
+		\ArialDezoitoBold\MakeUppercase{\imprimirtitulo}
+		\vfill
+		%\justshowfont
+		\ArialDezeseisBold\MakeUppercase{\imprimirtipotrabalho}
+				
+		\vfill
+		%\justshowfont
+		\ArialDezeseisBold\MakeUppercase{\imprimirlocal}
+				
+		\ArialDezeseisBold\MakeUppercase{\imprimirdata}
+				
+	\end{capa}
+}
+% ---
+
+
+% ---
+% Impressão da Capa
+\newcommand{\imprimircapaGRADnoBack}{%
+	\begin{capa}%
+	\vspace{-5em}
+		\center
+		%\showfont		
+		\ArialDezeseisBold{\MakeUppercase{\imprimirinstituicao}}\vspace{0.5em}
+		
+		\ArialDezeseisBold\MakeUppercase{\imprimirdepartamento} \vspace{0.5em}
+		
+		\ArialDezeseisBold\MakeUppercase{\imprimirprograma}
+				
+		\vfill
+				
+		\ArialDezeseisBold\MakeUppercase{\imprimirautorA}\vspace{0.5em}
+		
+		\ArialDezeseisBold\MakeUppercase{\imprimirautorB}\vspace{0.5em}
+		
+		\ArialDezeseisBold\MakeUppercase{\imprimirautorC}
+		
+		%\justshowfont
+				
+		\vfill
+		\ArialDezoitoBold\MakeUppercase{\imprimirtitulo}
+		\vfill
+		%\justshowfont
+		\ArialDezeseisBold\MakeUppercase{\imprimirtipotrabalho}
+				
+		\vfill
+		%\justshowfont
+		\ArialDezeseisBold\MakeUppercase{\imprimirlocal}
+				
+		\ArialDezeseisBold\MakeUppercase{\imprimirdata}
+				
 	\end{capa}
 }
 % ---

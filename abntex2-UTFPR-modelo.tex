@@ -106,20 +106,25 @@
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ---
 \titulo{Modelo Canônico de\\ Trabalho Acadêmico com \abnTeX}
-\autor{Nome do Autor}
+\autor{Adriano Ruseler}
+
+\autorA{Nome do Autor A}
+\autorB{Nome do Autor B}
+\autorC{Nome do Autor C}
+
 \local{Curitiba}
 \data{\today}
 \orientador{Nome do orientador}
 \coorientador{Equipe \abnTeX}
 
 \instituicao{Universidade Tecnológica Federal do Paraná}
-\departamento{Departamento Acadêmico de Eletrotécnica}
-\programa{Programa de Pós--Graduação em Tecnologia}
+\departamento{}
+\programa{Programa de Pós--Graduação em Engenharia Elétrica e Informática industrial}
 
 
 \siglainstituicao{UTFPR}
 \sigladepartamento{DAELT}
-\siglaprograma{}
+\siglaprograma{CPGEI}
 
 
 \tipotrabalho{Tipo do Trabalho}
@@ -145,7 +150,7 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 		pdfauthor={\@author},
     	pdfsubject={\imprimirpreambulo},
 	    pdfcreator={LaTeX with abnTeX2-utfpr},
-		pdfkeywords={abnt}{latex}{abntex}{abntex2}{\imprimirtipotrabalho}, 
+		pdfkeywords={latex}{abntex}{abntex2}{\imprimirtipotrabalho}, 
 		colorlinks=true,       		% false: boxed links; true: colored links
     	linkcolor=blue,          	% color of internal links
     	citecolor=blue,        		% color of links to bibliography
@@ -189,10 +194,17 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 % ----------------------------------------------------------
 % \pretextual
 
+
 % ---
 % Capa
 % ---
-\imprimircapa
+\imprimircapaPOS
+%\imprimircapaGRAD
+
+%\imprimircapaPOSnoBack % Capa sem imagem de fundo
+%\imprimircapaGRADnoBack % Capa sem imagem de fundo
+
+
 %\imprimircapautfpr
 % ---
 
@@ -557,8 +569,9 @@ Lauro César Araujo
 
 \lipsum[2-3]
 
-% ----------------------------------------------------------
-% PARTE
+
+
+
 % ----------------------------------------------------------
 \part{Resultados}
 % ----------------------------------------------------------
