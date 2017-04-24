@@ -18,7 +18,7 @@
 %%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{abntex2-utfpr}[2017/04/23 v1.0 Modelo da UTFPR baseado em abnTeX2]
+\ProvidesClass{abntex2-utfpr}[2017/04/24 v1.0 Modelo da UTFPR baseado em abnTeX2]
 
 %
 % Repassa todos os parametros a classe abntex2, 
@@ -40,6 +40,16 @@
 	shape: \f@shape{},
 	size: \f@size{},
 	baseline: \f@baselineskip{})
+}
+
+% Comandos auxiliares
+\newcommand{\justshowfont}{%
+	(\f@encoding{},
+	\f@family{},
+	\f@series{},
+	\f@shape{},
+	\f@size{},
+	\f@baselineskip{})
 }
 
 
@@ -85,6 +95,62 @@
 \newtheorem*{observacao}{Observa\c{c}\~ao}
 
 
+
+
+% Fontes dos títulos e seções 
+
+% Tamanho da fonte padrão do 'ABNTEX'
+%\renewcommand{\normalsize}{\fontsize{10.5pt}{11pt}}
+
+
+% http://tug.org/fonts/
+\renewcommand{\familydefault}{cmr} % Fonte padrão utilizada no texto
+% The three default family font variables and the \familydefault variable should not be confused with their respective switch:
+%   http://www.forkosh.com/pstex/latexcommands.htm
+% variable	value	activated by
+
+%\encodingdefault	OT1	\normalfont, \textnormal{}
+%\familydefault	\rmdefault	\normalfont, \textnormal{}
+%\rmdefault	cmr	\rmfamily, \textrm{}
+%\ttdefault	cmtt	\ttfamily, \texttt{}
+%\sfdefault	cmss	\sffamily, \textsf{}
+%\seriesdefault	m	\normalfont, \textnormal{}
+%\mddefault	m	\mdseries, \textmd{}
+%\bfdefault	bx	\bfseries, \textbf{}
+%\shapedefault	n	\normalfont, \textnormal{}
+%\updefault	n	\upshape, \textup{}
+%\itdefault	it	\itshape, \textit{}
+%\scdefault	sc	\scshape, \textsc{}
+%\sldefault	sl	\slshape, \textsl{} 
+
+
+\renewcommand{\rmdefault}{cmr} % Selects a roman (i.e., serifed) font family
+% \renewcommand{\sfdefault}{cmss} % Selects a sans serif font family
+% \renewcommand{\ttdefault}{cmtt} % Selects a monospaced (“typewriter”) font family
+
+
+\renewcommand{\ABNTEXpartfont}{\usefont{T1}{cmr}{bx}{n}} % Apendices, anexos...
+%\renewcommand{\ABNTEXpartfontsize}{\fontsize{15pt}{18pt}}
+\renewcommand{\ABNTEXchapterfont}{\usefont{T1}{cmr}{bx}{n}}
+%\renewcommand{\ABNTEXchapterfontsize}{\fontsize{10.5pt}{12pt}}
+\renewcommand{\ABNTEXsectionfont}{\usefont{T1}{cmr}{m}{n}}
+%\renewcommand{\ABNTEXsectionfontsize}{\fontsize{10.5pt}{12pt}}
+\renewcommand{\ABNTEXsubsectionfont}{\usefont{T1}{cmr}{b}{n}}
+%\renewcommand{\ABNTEXsubsectionfontsize}{\fontsize{10.5pt}{12pt}}
+\renewcommand{\ABNTEXsubsubsectionfont}{\usefont{T1}{cmr}{m}{n}}
+%\renewcommand{\ABNTEXsubsubsectionfontsize}{\fontsize{10.5pt}{12pt}}
+\renewcommand{\ABNTEXsubsubsubsectionfont}{\usefont{T1}{cmr}{m}{it}}
+%\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\fontsize{10.5pt}{12pt}}
+
+
+
+% Informação sobre o nível do trabalho: Tese, Dissertação, 	TCC, Monografia, Relatório, 	etc.
+\DeclareFixedFont{\ArialCatorze}{T1}{ptm}{m}{n}{14pt} % TEX extended text - ptm - Adobe Times	
+\DeclareFixedFont{\ArialDoze}{T1}{ptm}{m}{n}{12pt} % TEX extended text - ptm - Adobe Times	
+\DeclareFixedFont{\ArialCatorzeBold}{T1}{ptm}{bx}{n}{14pt} % TEX extended text - ptm - Adobe Times	
+\DeclareFixedFont{\ArialDozeBold}{T1}{ptm}{bx}{n}{12pt} % TEX extended text - ptm - Adobe Times	
+
+
 % -----------------------------------------------------------------------------
 % Comandos de dados
 % -----------------------------------------------------------------------------
@@ -96,6 +162,19 @@
 % Comandos de dados - Programa
 \providecommand{\imprimirprograma}{}
 \newcommand{\programa}[1]{\renewcommand{\imprimirprograma}{#1}}
+
+% Comandos de dados - Sigla Instituição
+\providecommand{\imprimirsiglainstituicao}{}
+\newcommand{\siglainstituicao}[1]{\renewcommand{\imprimirsiglainstituicao}{#1}}
+
+% Comandos de dados - Sigla Departamento
+\providecommand{\imprimirsigladepartamento}{}
+\newcommand{\sigladepartamento}[1]{\renewcommand{\imprimirsigladepartamento}{#1}}
+
+% Comandos de dados - Programa
+\providecommand{\imprimirsiglaprograma}{}
+\newcommand{\siglaprograma}[1]{\renewcommand{\imprimirsiglaprograma}{#1}}
+
 
 % Comandos de dados - Subtítulo do trabalho
 \providecommand{\imprimirsubtitulo}{}
@@ -151,7 +230,7 @@
 % Capa
 % -----------------------------------------------------------------------------
 \makeatletter
-\renewcommand{\imprimircapa}{
+\newcommand{\imprimircapautfpr}{
     \begin{capa}
         \begin{center}
 		\begin{SingleSpacing}
@@ -194,11 +273,104 @@
 
 
 
+% ---
+% Folha de rosto
+%   usar \imprimirfolhaderosto* casodeseje imprimir algo no verso da
+%   página no caso de estar no modo twoside. Util para imprimir a Ficha
+%   Bibliografica. Porem, se estiver no modo oneside, a versao sem estrela
+%   é identica.
+%\renewenvironment{folhaderosto}[1][\folhaderostoname]{\clearpage\PRIVATEbookmarkthis{#1}}{\cleardoublepage}
+%\renewenvironment{folhaderosto*}[1][\folhaderostoname]{\clearpage\PRIVATEbookmarkthis{#1}}{\newpage}%
+
+% ---
+% Conteudo padrao da Folha de Rosto
+\makeatletter
+\renewcommand{\folhaderostocontent}{
+	\begin{center}				
+		%\vspace*{1cm}
+		{\ABNTEXchapterfont\large\imprimirautor}
+				
+		\vspace*{\fill}\vspace*{\fill}
+		\begin{center}
+			\ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+		\end{center}
+		\vspace*{\fill}
+				
+		\abntex@ifnotempty{\imprimirpreambulo}{%
+			\hspace{.45\textwidth}
+			\begin{minipage}{5,5cm}				
+				\SingleSpacing
+				\fontsize{9.5}{10.5} \selectfont	\imprimirpreambulo\\
+														
+				\fontsize{9.5}{10.5} \selectfont{\textbf{\imprimirorientadorRotulo}~\imprimirorientador\par}
+				\abntex@ifnotempty{\imprimircoorientador}{%
+					{\textbf{\imprimircoorientadorRotulo}~\imprimircoorientador}%
+				}%				
+			\end{minipage}%
+			\vspace*{\fill}
+		}%
+				
+		%		{\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao\vspace*{\fill}}}
+				
+		%		{\large\imprimirorientadorRotulo~\imprimirorientador\par}
+		%		\abntex@ifnotempty{\imprimircoorientador}{%
+		%			{\large\imprimircoorientadorRotulo~\imprimircoorientador}%
+		%		}%
+		\vspace*{\fill}
+				
+		{\large\imprimirlocal}
+		\par
+		{\large\imprimirdata}
+		\vspace*{1cm}
+				
+	\end{center}
+}
+\makeatother
+
+
+
+
+% ---
+% Impressão da Capa
+\renewcommand{\imprimircapa}{%
+	\begin{capa}%
+		\center
+		%\showfont		
+		\ArialDozeBold\MakeUppercase{\imprimirinstituicao}\vspace{0.5em}
+		
+		\ArialDozeBold\MakeUppercase{\imprimirdepartamento} \vspace{0.5em}
+		
+		\ArialDozeBold\MakeUppercase{\imprimirprograma}
+				
+		\vfill
+				
+		\ArialDozeBold\MakeUppercase{\imprimirautor}
+		
+		%\justshowfont
+				
+		\vfill
+		\ArialCatorzeBold\MakeUppercase{\imprimirtitulo}
+		\vfill
+		%\justshowfont
+		\ArialDozeBold\MakeUppercase{\imprimirtipotrabalho}
+				
+		\vfill
+		%\justshowfont
+		\ArialDozeBold\MakeUppercase{\imprimirlocal}
+				
+		\ArialDozeBold\MakeUppercase{\imprimirdata}
+				
+		\vspace*{1cm}
+	\end{capa}
+}
+% ---
+
+
 % -----------------------------------------------------------------------------
 % Folha de rosto
 % -----------------------------------------------------------------------------
 \makeatletter
-\renewcommand{\folhaderostocontent}
+\newcommand{\folhaderostocontentufsc}
 {%
     \setcounter{page}{2}
     \begin{center}
