@@ -28,7 +28,9 @@
 \ProcessOptions\relax
 \LoadClass{abntex2}
 
-
+\RequirePackage{lmodern}			% Usa a fonte Latin Modern			
+\RequirePackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\RequirePackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
 
 \RequirePackage{amsthm}
 \RequirePackage{tikz}
@@ -248,51 +250,48 @@
 %\renewenvironment{folhaderosto}[1][\folhaderostoname]{\clearpage\PRIVATEbookmarkthis{#1}}{\cleardoublepage}
 %\renewenvironment{folhaderosto*}[1][\folhaderostoname]{\clearpage\PRIVATEbookmarkthis{#1}}{\newpage}%
 
+
 % ---
 % Conteudo padrao da Folha de Rosto
 \makeatletter
 \renewcommand{\folhaderostocontent}{
-	\begin{center}				
-		%\vspace*{1cm}
-		{\ABNTEXchapterfont\large\imprimirautor}
+	\begin{center}
+	
+	\abntex@ifnotempty{\imprimirautor}{\ArialDozeBold\MakeUppercase\imprimirautor\vspace{0.5em}\par}
+	\abntex@ifnotempty{\imprimirautorA}{\ArialDozeBold\MakeUppercase\imprimirautorA\vspace{0.5em}\par}
+	\abntex@ifnotempty{\imprimirautorB}{\ArialDozeBold\MakeUppercase\imprimirautorB\vspace{0.5em}\par}
+	\abntex@ifnotempty{\imprimirautorC}{\ArialDozeBold\MakeUppercase\imprimirautorC}
+       
 				
-		\vspace*{\fill}\vspace*{\fill}
-		\begin{center}
-			\ABNTEXchapterfont\bfseries\Large\imprimirtitulo
-		\end{center}
-		\vspace*{\fill}
+		\vfill\vfill
+		
+		\ArialCatorzeBold\MakeUppercase\imprimirtitulo
+
+		\vfill
 				
 		\abntex@ifnotempty{\imprimirpreambulo}{%
-			\hspace{.45\textwidth}
-			\begin{minipage}{5,5cm}				
+			\hspace{.4\textwidth}
+			\begin{minipage}{8cm}				
 				\SingleSpacing
-				\fontsize{9.5}{10.5} \selectfont	\imprimirpreambulo\\
+					\imprimirpreambulo\\
 														
-				\fontsize{9.5}{10.5} \selectfont{\textbf{\imprimirorientadorRotulo}~\imprimirorientador\par}
+				{\textbf{\imprimirorientadorRotulo}~\imprimirorientador\par}
 				\abntex@ifnotempty{\imprimircoorientador}{%
 					{\textbf{\imprimircoorientadorRotulo}~\imprimircoorientador}%
 				}%				
 			\end{minipage}%
-			\vspace*{\fill}
+			\vfill
 		}%
-				
-		%		{\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao\vspace*{\fill}}}
-				
-		%		{\large\imprimirorientadorRotulo~\imprimirorientador\par}
-		%		\abntex@ifnotempty{\imprimircoorientador}{%
-		%			{\large\imprimircoorientadorRotulo~\imprimircoorientador}%
-		%		}%
-		\vspace*{\fill}
-				
-		{\large\imprimirlocal}
+		\vfill
+		
+		\ArialDozeBold\MakeUppercase\imprimirlocal
 		\par
-		{\large\imprimirdata}
-		\vspace*{1cm}
+		\ArialDozeBold\MakeUppercase\imprimirdata
 				
 	\end{center}
 }
-\makeatother
 
+\makeatother
 
 
 
@@ -303,17 +302,16 @@
 	\tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{Capa/CapaBackGround}};
 	\color{white}
 	\vspace{-5em}
-		\center
-		%\showfont		
+		\center	
 		\ArialDezeseisBold{\MakeUppercase{\imprimirinstituicao}}\vspace{0.5em}
 		
-		\ArialDezeseisBold\MakeUppercase{\imprimirdepartamento} \vspace{0.5em}
+	%	\ArialDezeseisBold\MakeUppercase{\imprimirdepartamento} \vspace{0.5em}
 		
 		\ArialDezeseisBold\MakeUppercase{\imprimirprograma}
-				
+
 		\vfill
 				
-		\ArialDezeseisBold\MakeUppercase{\imprimirautor}
+		\ArialDezeseisBold\MakeUppercase{\imprimirautor}		
 		
 		%\justshowfont
 				
@@ -449,67 +447,6 @@
 	\end{capa}
 }
 % ---
-
-
-% -----------------------------------------------------------------------------
-% Folha de rosto
-% -----------------------------------------------------------------------------
-\makeatletter
-\newcommand{\folhaderostocontentufsc}
-{%
-    \setcounter{page}{2}
-    \begin{center}
-        \large\MakeUppercase{\imprimirautor}\\
-    \end{center}
-
-    \vspace*{96pt}
-
-    \begin{center}
-        \ABNTEXchapterfont\large\MakeUppercase{\imprimirtitulo}
-        \abntex@ifnotempty{\imprimirsubtitulo}
-	{%
-        	{\ABNTEXchapterfont: }{\large{\imprimirsubtitulo}}
-        }
-    \end{center}
-
-    \vspace*{60pt}
-
-    \abntex@ifnotempty{\imprimirpreambulo}
-    {%
-        \SingleSpacing
-        \begin{tabular}{p{.25\textwidth}p{.13\textwidth}p{.44\textwidth}}
-            & \multicolumn{2}{p{.6\textwidth}}{\small\hyphenpenalty=10000{\imprimirpreambulo}} \\ & & \\
-            \abntex@ifnotempty{\imprimirareaconcentracao}
-            {%
-                & \multicolumn{2}{p{.6\textwidth}}{\small\hyphenpenalty=10000{\imprimirareaconcentracaoRotulo\imprimirareaconcentracao}} \\ & & \\
-            }
-            \abntex@ifnotempty{\imprimirlinhapesquisa}
-            {%
-                & \multicolumn{2}{p{.6\textwidth}}{\small\hyphenpenalty=10000{\imprimirlinhapesquisaRotulo\imprimirlinhapesquisa}} \\ & & \\
-            }
-            \abntex@ifnotempty{\imprimirorientador}
-            {%
-                & \small\imprimirorientadorRotulo & \imprimirorientador \\
-                & & \small\imprimirinstOrientador \\ & & \\
-            }
-            \abntex@ifnotempty{\imprimircoorientador}
-            {%
-                & \small\imprimircoorientadorRotulo & \imprimircoorientador \\
-                & & \small\imprimirinstCoorientador
-            }
-        \end{tabular}
-    }
-
-    \vspace*{\fill}
-
-    \begin{center}
-	\begin{SingleSpacing}
-            \large\MakeUppercase{\imprimirlocal}\\
-            \large\MakeUppercase{\imprimirdata}
-	\end{SingleSpacing}
-    \end{center}
-}
-\makeatother
 
 
 
