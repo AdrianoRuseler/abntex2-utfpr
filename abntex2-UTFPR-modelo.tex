@@ -39,37 +39,29 @@
 	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
 	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
 	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	%sumario=tradicional,
+	sumario=abnt-6027-2012, % memoir v3.6k ou superior
 	% -- opções do pacote babel --
 	english,			% idioma adicional para hifenização
-%	french,				% idioma adicional para hifenização
-	spanish,			% idioma adicional para hifenização
 	brazil				% o último idioma é o principal do documento
 	]{abntex2-utfpr}
 
-% ---
-% Pacotes básicos 
-% ---
-\usepackage{lmodern}			% Usa a fonte Latin Modern			
-\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
-\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
-\usepackage{lastpage}			% Usado pela Ficha catalográfica
-\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
-\usepackage{color}				% Controle das cores
-\usepackage{graphicx}			% Inclusão de gráficos
-\usepackage{microtype} 			% para melhorias de justificação
-% ---
-		
-% ---
-% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
-% ---
-\usepackage{lipsum}				% para geração de dummy text
-% ---
 
 % ---
 % Pacotes de citações
 % ---
 \usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
 \usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+%\usepackage[num]{abntex2cite} % Citação numérica [num]
+%\citebrackets[]
+
+
+% Altera de sin e tan para sen e tg nas equações
+\DeclareMathOperator{\sen}{sen}
+\renewcommand{\sin}{\sen} 
+
+\DeclareMathOperator{\tg}{tg}
+\renewcommand{\tan}{\tg} 
 
 % % Para uso futuro
 %\usepackage[
@@ -138,6 +130,17 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 
 % ---
 % Configurações de aparência do PDF final
+% ---
+
+%\definecolor{figcolor}{rgb}{1,0.4,0}  % orange
+%\definecolor{tabcolor}{rgb}{1,0.4,0}  % orange
+%\definecolor{eqncolor}{rgb}{1,0.4,0}  % orange
+\definecolor{linkcolor}{rgb}{1,0.4,0}  % orange
+%\definecolor{citecolor}{rgb}{1,0.4,0}  % orange
+%\definecolor{seccolor}{rgb}{0,0,1}  % blue
+%\definecolor{abscolor}{rgb}{0,0,1}  % blue
+%\definecolor{titlecolor}{rgb}{0,0,1}  % blue
+%\definecolor{biocolor}{rgb}{0,0,1}  % blue
 
 % alterando o aspecto da cor azul
 \definecolor{blue}{RGB}{41,5,195}
@@ -161,6 +164,29 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 \makeatother
 % --- 
 
+
+
+% ---
+% Estilo de capítulos
+%
+%\chapterstyle{default}
+%\chapterstyle{pedersen} 
+%\chapterstyle{lyhne} 
+\chapterstyle{madsen} 
+% \chapterstyle{veelo} 
+%\chapterstyle{companion}
+
+%\chapterstyle{thatcher}
+%\chapterstyle{verville}
+%\chapterstyle{VZ14} % Ver classe para maiores detalhes
+
+
+%
+% Veja outros estilos em:
+% http://mirror.utexas.edu/ctan/info/latex-samples/MemoirChapStyles/MemoirChapStyles.pdf
+% ---
+
+
 % --- 
 % Espaçamentos entre linhas e parágrafos 
 % --- 
@@ -176,6 +202,22 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 % ---
 \makeindex
 % ---
+
+
+
+%\includeonly{PreTexto/fichacatalografica}
+%\includeonly{PreTexto/agradecimentos}
+%\includeonly{PreTexto/resumos}
+%\includeonly{PreTexto/siglas}
+%\includeonly{PreTexto/simbolos}
+%
+%\includeonly{Capitulos/00/CH00}
+%\includeonly{Capitulos/01/CH01}
+%\includeonly{Capitulos/02/CH02}
+%\includeonly{Capitulos/03/CH03}
+%\includeonly{Capitulos/04/CH04}
+
+
 
 % ----
 % Início do documento
@@ -290,6 +332,15 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 
 
 % ---
+% inserir códigos fonte
+% ---
+\pdfbookmark[0]{\lstlistingname}{lol}
+\lstlistoflistings* 
+\cleardoublepage
+% ---
+
+
+% ---
 % inserir lista de abreviaturas e siglas
 % ---
 \include{PreTexto/siglas}
@@ -319,112 +370,24 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 % ----------------------------------------------------------
 % Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
 % ----------------------------------------------------------
-\chapter*[Introdução]{Introdução}
-\addcontentsline{toc}{chapter}{Introdução}
-% ----------------------------------------------------------
+\include{Capitulos/00/CH00}
 
-Este documento e seu código-fonte são exemplos de referência de uso da classe
-\textsf{abntex2} e do pacote \textsf{abntex2cite}. O documento 
-exemplifica a elaboração de trabalho acadêmico (tese, dissertação e outros do
-gênero) produzido conforme a ABNT NBR 14724:2011 \emph{Informação e documentação
-- Trabalhos acadêmicos - Apresentação}.
-
-A expressão ``Modelo Canônico'' é utilizada para indicar que \abnTeX\ não é
-modelo específico de nenhuma universidade ou instituição, mas que implementa tão
-somente os requisitos das normas da ABNT. Uma lista completa das normas
-observadas pelo \abnTeX\ é apresentada em \citeonline{abntex2classe}.
-
-Sinta-se convidado a participar do projeto \abnTeX! Acesse o site do projeto em
-\url{http://www.abntex.net.br/}. Também fique livre para conhecer,
-estudar, alterar e redistribuir o trabalho do \abnTeX, desde que os arquivos
-modificados tenham seus nomes alterados e que os créditos sejam dados aos
-autores originais, nos termos da ``The \LaTeX\ Project Public
-License''\footnote{\url{http://www.latex-project.org/lppl.txt}}.
-
-Encorajamos que sejam realizadas customizações específicas deste exemplo para
-universidades e outras instituições --- como capas, folha de aprovação, etc.
-Porém, recomendamos que ao invés de se alterar diretamente os arquivos do
-\abnTeX, distribua-se arquivos com as respectivas customizações.
-Isso permite que futuras versões do \abnTeX~não se tornem automaticamente
-incompatíveis com as customizações promovidas. Consulte
-\citeonline{abntex2-wiki-como-customizar} par mais informações.
-
-Este documento deve ser utilizado como complemento dos manuais do \abnTeX\ 
-\cite{abntex2classe,abntex2cite,abntex2cite-alf} e da classe \textsf{memoir}
-\cite{memoir}. 
-
-Esperamos, sinceramente, que o \abnTeX\ aprimore a qualidade do trabalho que
-você produzirá, de modo que o principal esforço seja concentrado no principal:
-na contribuição científica.
-
-Equipe \abnTeX 
-
-Lauro César Araujo
 
 % ----------------------------------------------------------
 % PARTE
 % ----------------------------------------------------------
-\part{Preparação da pesquisa}
+%\part{Preparação da pesquisa}
 % ----------------------------------------------------------
 
 % ---
 % Capitulo com exemplos de comandos inseridos de arquivo externo 
 % ---
-\include{abntex2-modelo-include-comandos}
+\include{Capitulos/01/CH01}
 % ---
 
-% ----------------------------------------------------------
-% PARTE
-% ----------------------------------------------------------
-\part{Referenciais teóricos}
-% ----------------------------------------------------------
-
-% ---
-% Capitulo de revisão de literatura
-% ---
-\chapter{Lorem ipsum dolor sit amet}
-% ---
-
-% ---
-\section{Aliquam vestibulum fringilla lorem}
-% ---
-
-\lipsum[1]
-
-\lipsum[2-3]
-
-
-
-
-% ----------------------------------------------------------
-\part{Resultados}
-% ----------------------------------------------------------
-
-% ---
-% primeiro capitulo de Resultados
-% ---
-\chapter{Lectus lobortis condimentum}
-% ---
-
-% ---
-\section{Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-posuere cubilia Curae}
-% ---
-
-\lipsum[21-22]
-
-% ---
-% segundo capitulo de Resultados
-% ---
-\chapter{Nam sed tellus sit amet lectus urna ullamcorper tristique interdum
-elementum}
-% ---
-
-% ---
-\section{Pellentesque sit amet pede ac sem eleifend consectetuer}
-% ---
-
-\lipsum[24]
+\include{Capitulos/02/CH02}
+\include{Capitulos/03/CH03}
+\include{Capitulos/04/CH04}
 
 % ----------------------------------------------------------
 % Finaliza a parte no bookmark do PDF
@@ -436,10 +399,8 @@ elementum}
 % ---
 % Conclusão
 % ---
-\chapter{Conclusão}
+\include{Capitulos/Concl/Concl}
 % ---
-
-\lipsum[31-33]
 
 % ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
@@ -472,17 +433,9 @@ elementum}
 % Imprime uma página indicando o início dos apêndices
 \partapendices
 
-% ----------------------------------------------------------
-\chapter{Quisque libero justo}
-% ----------------------------------------------------------
-
-\lipsum[50]
-
-% ----------------------------------------------------------
-\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
-ac pretium ante justo a nulla curabitur tristique arcu eu metus}
-% ----------------------------------------------------------
-\lipsum[55-57]
+	\include{Apendices/A/APA}
+%	\include{Apendices/B/APB}
+%	\include{Apendices/C/APC}
 
 \end{apendicesenv}
 % ---
@@ -500,23 +453,9 @@ ac pretium ante justo a nulla curabitur tristique arcu eu metus}
 % Imprime uma página indicando o início dos anexos
 \partanexos
 
-% ---
-\chapter{Morbi ultrices rutrum lorem.}
-% ---
-\lipsum[30]
-
-% ---
-\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
-parturient montes nascetur ridiculus mus}
-% ---
-
-\lipsum[31]
-
-% ---
-\chapter{Fusce facilisis lacinia dui}
-% ---
-
-\lipsum[32]
+	\include{Anexos/A/ANA}
+%	\include{Anexos/B/ANB}
+%	\include{Anexos/C/ANC}
 
 \end{anexosenv}
 
