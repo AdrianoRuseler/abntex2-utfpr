@@ -180,11 +180,6 @@
 % ---
 
 
-% ------------------------------------------------------------------------
-% ------------------------------------------------------------------------
-% Estilo de capítulos
-% ------------------------------------------------------------------------
-% ------------------------------------------------------------------------
 
 
 \renewenvironment{resumo}[1][\resumoname]{%
@@ -347,6 +342,11 @@
 \providecommand{\imprimirautorC}{}
 \newcommand{\autorC}[1]{\renewcommand{\imprimirautorC}{#1}}
 
+
+% Comandos de dados - Cita Autores
+\providecommand{\imprimircitaautores}{}
+\newcommand{\citaautores}[1]{\renewcommand{\imprimircitaautores}{#1}}
+
 % Comandos de dados - Departamento
 \providecommand{\imprimirdepartamento}{}
 \newcommand{\departamento}[1]{\renewcommand{\imprimirdepartamento}{#1}}
@@ -354,6 +354,26 @@
 % Comandos de dados - Programa
 \providecommand{\imprimirprograma}{}
 \newcommand{\programa}[1]{\renewcommand{\imprimirprograma}{#1}}
+
+% Comandos de dados - Departamento em Inglês
+\providecommand{\imprimirdepartamentoEng}{}
+\newcommand{\departamentoEng}[1]{\renewcommand{\imprimirdepartamentoEng}{#1}}
+
+% Comandos de dados - Programa em Inglês
+\providecommand{\imprimirprogramaEng}{}
+\newcommand{\programaEng}[1]{\renewcommand{\imprimirprogramaEng}{#1}}
+
+% Comandos de dados - Instituição em Inglês
+\providecommand{\imprimirinstituicaoEng}{}
+\newcommand{\instituicaoEng}[1]{\renewcommand{\imprimirinstituicaoEng}{#1}}
+
+% Comandos de dados - Titulo em inglês
+\providecommand{\imprimirtituloEng}{}
+\newcommand{\tituloEng}[1]{\renewcommand{\imprimirtituloEng}{#1}}
+
+% Comandos de dados - Titulo em inglês
+\providecommand{\imprimirtipotrabalhoEng}{}
+\newcommand{\tipotrabalhoEng}[1]{\renewcommand{\imprimirtipotrabalhoEng}{#1}}
 
 % Comandos de dados - Sigla da Instituição
 \providecommand{\imprimirsiglainstituicao}{}
@@ -366,7 +386,6 @@
 % Comandos de dados - Sigla do Programa
 \providecommand{\imprimirsiglaprograma}{}
 \newcommand{\siglaprograma}[1]{\renewcommand{\imprimirsiglaprograma}{#1}}
-
 
 % Comandos de dados - Subtítulo do trabalho
 \providecommand{\imprimirsubtitulo}{}
