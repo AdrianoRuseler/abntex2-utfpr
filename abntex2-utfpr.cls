@@ -35,6 +35,7 @@
 \RequirePackage{amsthm}
 \RequirePackage{tikz}
 \RequirePackage{epstopdf}%
+\RequirePackage{datetime}
 
 % Comandos auxiliares
 \newcommand{\showfont}{%
