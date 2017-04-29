@@ -40,7 +40,7 @@
 	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
 	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
 	%sumario=tradicional,
-	sumario=abnt-6027-2012, % memoir v3.6k ou superior
+%	sumario=abnt-6027-2012, % memoir v3.6k ou superior
 	% -- opções do pacote babel --
 	english,			% idioma adicional para hifenização
 	brazil				% o último idioma é o principal do documento
@@ -54,6 +54,7 @@
 \usepackage[alf]{abntex2cite}	% Citações padrão ABNT
 %\usepackage[num]{abntex2cite} % Citação numérica [num]
 %\citebrackets[]
+
 
 
 % % Para uso futuro
@@ -79,28 +80,30 @@
 % Define os textos da citação
 \renewcommand*{\backrefalt}[4]{
 	\ifcase #1 %
-		Nenhuma citação no texto.%
+	Nenhuma citação no texto.%
 	\or
-		Citado na página #2.%
+	Citado na página #2.%
 	\else
-		Citado #1 vezes nas páginas #2.%
+	Citado #1 vezes nas páginas #2.%
 	\fi}%
 % ---
+
+
 
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ---
 \titulo{Modelo Canônico de Trabalho Acadêmico com \abnTeX}
-%\title{Title in English} 
-
+\tituloEng{Canonic Model of Academic Work with \abnTeX}
 
 \autor{Nome do Autor}
 
-%\autorA{Nome do Autor A} % Em caso de TCC
-%\autorB{Nome do Autor B} % Em caso de TCC
-%\autorC{Nome do Autor C} % Em caso de TCC
+\autorA{Nome do Autor A} % Em caso de TCC
+\autorB{Nome do Autor B} % Em caso de TCC
+\autorC{Nome do Autor C} % Em caso de TCC
 
-\citaautores{AUTOR A, Nome; AUTOR B, Nome; AUTOR C, Nome;}
+\citaautores{AUTOR, Nome;} % Em caso de Tese ou Dissertação
+\citaautores{AUTOR A, Nome; AUTOR B, Nome; AUTOR C, Nome;} % Em caso de TCC
 
 
 \local{Curitiba}
@@ -112,7 +115,7 @@
 \departamento{Departamento Acadêmico de Eletrotécnica}
 \programa{Programa de Pós--Graduação em Engenharia Elétrica e Informática Industrial}
 
-\tituloEng{Canonic Model of Academic Work with \abnTeX}
+
 \instituicaoEng{Universidade Tecnológica Federal do Paraná}
 \departamentoEng{Departamento Acadêmico de Eletrotécnica}
 \programaEng{Programa de Pós--Graduação em Engenharia Elétrica e Informática Industrial}
@@ -210,19 +213,8 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 % ---
 
 
-
-%\includeonly{PreTexto/fichacatalografica}
-%\includeonly{PreTexto/agradecimentos}
-%\includeonly{PreTexto/resumos}
-%\includeonly{PreTexto/siglas}
-%\includeonly{PreTexto/simbolos}
-%
-%\includeonly{Capitulos/00/CH00}
-%\includeonly{Capitulos/01/CH01}
-%\includeonly{Capitulos/02/CH02}
-%\includeonly{Capitulos/03/CH03}
-%\includeonly{Capitulos/04/CH04}
-
+%\includeonly{Proposta/proposta-de-tcc}
+%\includeonly{Proposta/descricao-da-proposta}
 
 
 % ----
@@ -246,8 +238,8 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 % ---
 % Capa
 % ---
-\imprimircapaPOS
-%\imprimircapaGRAD
+%\imprimircapaPOS
+\imprimircapaGRAD
 
 %\imprimircapaPOSnoBack % Capa sem imagem de fundo
 %\imprimircapaGRADnoBack % Capa sem imagem de fundo
@@ -263,110 +255,6 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 \imprimirfolhaderosto*
 
 
-% ---
-
-% ---
-% Inserir a ficha bibliografica
-% ---
-
-% Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
-% catalogação-na-publicação''. Você pode utilizar este modelo como referência. 
-% Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
-% com a ficha catalográfica definitiva após a defesa do trabalho. Quando estiver
-% com o documento, salve-o como PDF no diretório do seu projeto e substitua todo
-% o conteúdo de implementação deste arquivo pelo comando abaixo:
-%
-% \begin{fichacatalografica}
-%     \includepdf{fig_ficha_catalografica.pdf}
-% \end{fichacatalografica}
-
-\include{PreTexto/fichacatalografica}
-
-%\include{PreTexto/errata}
-
-% ---
-% Inserir folha de aprovação
-% ---
-
-% Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
-% 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação
-% do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma
-% imagem da página assinada pela banca com o comando abaixo:
-%
-% \includepdf{folhadeaprovacao_final.pdf}
-%
-
-
-% ---
-% Dedicatória
-% ---
-\include{PreTexto/dedicatoria}
-% ---
-
-% ---
-% Agradecimentos
-% ---
-\include{PreTexto/agradecimentos}
-% ---
-
-% ---
-% Epígrafe
-% ---
-\include{PreTexto/epigrafe}
-% ---
-
-% ---
-% RESUMOS
-% ---
-\include{PreTexto/resumos}
-
-% ---
-% inserir lista de ilustrações
-% ---
-\pdfbookmark[0]{\listfigurename}{lof}
-\listoffigures*
-\cleardoublepage
-% ---
-
-% ---
-% inserir lista de tabelas
-% ---
-\pdfbookmark[0]{\listtablename}{lot}
-\listoftables*
-\cleardoublepage
-% ---
-
-
-% ---
-% inserir códigos fonte
-% ---
-\pdfbookmark[0]{\lstlistingname}{lol}
-\lstlistoflistings* 
-\cleardoublepage
-% ---
-
-
-% ---
-% inserir lista de abreviaturas e siglas
-% ---
-\include{PreTexto/siglas}
-% ---
-
-% ---
-% inserir lista de símbolos
-% ---
-\include{PreTexto/simbolos}
-% ---
-
-% ---
-% inserir o sumario
-% ---
-\pdfbookmark[0]{\contentsname}{toc}
-\tableofcontents*
-\cleardoublepage
-% ---
-
-
 
 % ----------------------------------------------------------
 % ELEMENTOS TEXTUAIS
@@ -376,37 +264,12 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 % ----------------------------------------------------------
 % Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
 % ----------------------------------------------------------
-\include{Capitulos/00/CH00}
+\include{Proposta/proposta-de-tcc}
+
+\include{Proposta/descricao-da-proposta}
 
 
-% ----------------------------------------------------------
-% PARTE
-% ----------------------------------------------------------
-%\part{Preparação da pesquisa}
-% ----------------------------------------------------------
 
-% ---
-% Capitulo com exemplos de comandos inseridos de arquivo externo 
-% ---
-\include{Capitulos/01/CH01}
-% ---
-
-\include{Capitulos/02/CH02}
-\include{Capitulos/03/CH03}
-\include{Capitulos/04/CH04}
-
-% ----------------------------------------------------------
-% Finaliza a parte no bookmark do PDF
-% para que se inicie o bookmark na raiz
-% e adiciona espaço de parte no Sumário
-% ----------------------------------------------------------
-\phantompart
-
-% ---
-% Conclusão
-% ---
-\include{Capitulos/Concl/Concl}
-% ---
 
 % ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
@@ -417,59 +280,7 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 % ----------------------------------------------------------
 % Referências bibliográficas
 % ----------------------------------------------------------
-\bibliography{Refs/abntex2-modelo-references}
-
-% ----------------------------------------------------------
-% Glossário
-% ----------------------------------------------------------
-%
-% Consulte o manual da classe abntex2 para orientações sobre o glossário.
-%
-%\glossary
-
-% ----------------------------------------------------------
-% Apêndices
-% ----------------------------------------------------------
-
-% ---
-% Inicia os apêndices
-% ---
-\begin{apendicesenv}
-
-% Imprime uma página indicando o início dos apêndices
-\partapendices
-
-	\include{Apendices/A/APA}
-%	\include{Apendices/B/APB}
-%	\include{Apendices/C/APC}
-
-\end{apendicesenv}
-% ---
-
-
-% ----------------------------------------------------------
-% Anexos
-% ----------------------------------------------------------
-
-% ---
-% Inicia os anexos
-% ---
-\begin{anexosenv}
-
-% Imprime uma página indicando o início dos anexos
-\partanexos
-
-	\include{Anexos/A/ANA}
-%	\include{Anexos/B/ANB}
-%	\include{Anexos/C/ANC}
-
-\end{anexosenv}
-
-%---------------------------------------------------------------------
-% INDICE REMISSIVO
-%---------------------------------------------------------------------
-\phantompart
-\printindex
-%---------------------------------------------------------------------
+%\bibliography{Refs/abntex2-modelo-references}
+\bibliography{Refs/base-referencias}
 
 \end{document}

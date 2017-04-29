@@ -172,6 +172,15 @@
 
 
 
+
+% Altera de sin e tan para sen e tg nas equações
+\DeclareMathOperator{\sen}{sen}
+\renewcommand{\sin}{\sen} 
+
+\DeclareMathOperator{\tg}{tg}
+\renewcommand{\tan}{\tg} 
+
+
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
 % Comandos e ambientes de editoracao APENDICES e ANEXOS
@@ -304,17 +313,19 @@
 
 
 \renewcommand{\ABNTEXpartfont}{\usefont{T1}{cmr}{bx}{n}} % Apendices, anexos...
-%\renewcommand{\ABNTEXpartfontsize}{\fontsize{15pt}{18pt}}
+\renewcommand{\ABNTEXpartfontsize}{\fontsize{15pt}{18pt}}
 \renewcommand{\ABNTEXchapterfont}{\usefont{T1}{cmr}{bx}{n}}
-%\renewcommand{\ABNTEXchapterfontsize}{\fontsize{10.5pt}{12pt}}
+\renewcommand{\ABNTEXchapterfontsize}{\normalfont}
 \renewcommand{\ABNTEXsectionfont}{\usefont{T1}{cmr}{m}{n}}
-%\renewcommand{\ABNTEXsectionfontsize}{\fontsize{10.5pt}{12pt}}
+\renewcommand{\ABNTEXsectionfontsize}{\normalfont}
 \renewcommand{\ABNTEXsubsectionfont}{\usefont{T1}{cmr}{b}{n}}
-%\renewcommand{\ABNTEXsubsectionfontsize}{\fontsize{10.5pt}{12pt}}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalfont}
 \renewcommand{\ABNTEXsubsubsectionfont}{\usefont{T1}{cmr}{m}{n}}
-%\renewcommand{\ABNTEXsubsubsectionfontsize}{\fontsize{10.5pt}{12pt}}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalfont}
 \renewcommand{\ABNTEXsubsubsubsectionfont}{\usefont{T1}{cmr}{m}{it}}
-%\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\fontsize{10.5pt}{12pt}}
+\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalfont}
+
+
 
 
 
