@@ -308,22 +308,23 @@
 
 
 \renewcommand{\rmdefault}{cmr} % Selects a roman (i.e., serifed) font family
-% \renewcommand{\sfdefault}{cmss} % Selects a sans serif font family
-% \renewcommand{\ttdefault}{cmtt} % Selects a monospaced (typewriter) font family
+%\renewcommand{\sfdefault}{cmss} % Selects a sans serif font family
+%\renewcommand{\ttdefault}{cmtt} % Selects a monospaced (typewriter) font family
 
 
 \renewcommand{\ABNTEXpartfont}{\usefont{T1}{cmr}{bx}{n}} % Apendices, anexos...
 \renewcommand{\ABNTEXpartfontsize}{\fontsize{15pt}{18pt}}
-\renewcommand{\ABNTEXchapterfont}{\usefont{T1}{cmr}{bx}{n}}
+
 \renewcommand{\ABNTEXchapterfontsize}{\normalfont}
-\renewcommand{\ABNTEXsectionfont}{\usefont{T1}{cmr}{m}{n}}
-\renewcommand{\ABNTEXsectionfontsize}{\normalfont}
-\renewcommand{\ABNTEXsubsectionfont}{\usefont{T1}{cmr}{b}{n}}
-\renewcommand{\ABNTEXsubsectionfontsize}{\normalfont}
-\renewcommand{\ABNTEXsubsubsectionfont}{\usefont{T1}{cmr}{m}{n}}
-\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalfont}
-\renewcommand{\ABNTEXsubsubsubsectionfont}{\usefont{T1}{cmr}{m}{it}}
-\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalfont}
+%\renewcommand{\ABNTEXchapterfont}{\usefont{T1}{cmr}{bx}{n}}
+\renewcommand{\ABNTEXsectionfontsize}{\bfseries}
+%\renewcommand{\ABNTEXsectionfont}{\usefont{T1}{lmss}{bx}{n}}
+%\renewcommand{\ABNTEXsubsectionfont}{\usefont{T1}{cmr}{bx}{n}}
+\renewcommand{\ABNTEXsubsectionfontsize}{\mdseries}
+%\renewcommand{\ABNTEXsubsubsectionfont}{\usefont{T1}{cmr}{m}{n}}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\mdseries\itshape}
+%\renewcommand{\ABNTEXsubsubsubsectionfont}{\usefont{T1}{cmr}{m}{it}}
+\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalfont\itshape}
 
 
 
