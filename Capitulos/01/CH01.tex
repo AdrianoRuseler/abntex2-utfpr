@@ -366,7 +366,7 @@ acadêmicos.
 	\caption{Exemplo de tabela utilizando o pacote \emph{siunitx} e \emph{resizebox}.}
 	\label{tab:SimulationResults}
 	\centering
-	\resizebox{0.6\linewidth}{!}{%
+	\resizebox{0.8\linewidth}{!}{%
 		\begin{tabular}{cc|cc|cc} \toprule 
 			\multicolumn{2}{l}{\textbf{Fase A} } & \multicolumn{2}{l}{\textbf{Fase B}} 
 			& \multicolumn{2}{l}{\textbf{Fase C}} \\ \hline
@@ -388,6 +388,7 @@ acadêmicos.
 			$I_{Ca3}$&$\SI{1.2598194e+000}{\A}$&  $I_{Cb3}$&$\SI{1.4708279e+000}{\A}$& $I_{Cc3}$&$\SI{1.3017673e+000}{\A}$ \\
 			\bottomrule
 		\end{tabular}}
+	\fonte{Autoria própria.}
 \end{table}	
 
 
@@ -403,7 +404,7 @@ acadêmicos.
 como o exemplo da \autoref{fig_circulo}.
 
 \begin{figure}[htb]
-	\caption{\label{fig_circulo}A delimitação do espaço}
+	
 	\begin{center}
 	    \setlength{\unitlength}{5cm}
 		\begin{picture}(1,1)
@@ -434,7 +435,8 @@ como o exemplo da \autoref{fig_circulo}.
 		\put(0,0){\line(6,5){1}}
 		\end{picture}
 	\end{center}
-	\legend{Fonte: os autores}
+	\caption{\label{fig_circulo}A delimitação do espaço}
+	\fonte{Autoria própria.}
 \end{figure}
 
 
@@ -542,6 +544,17 @@ matemática que não é numerada.
 
 Consulte mais informações sobre expressões matemáticas em
 \url{https://code.google.com/p/abntex2/wiki/Referencias}.
+
+
+\begin{equation}
+	X(s) = \int\limits_{t = -\infty}^{\infty} x(t) \, \text{e}^{-st} \, dt
+	\label{eq:laplace}
+\end{equation}
+
+\begin{equation}
+	F(u, v) = \sum_{m = 0}^{M - 1} \sum_{n = 0}^{N - 1} f(m, n) \exp \left[ -j 2 \pi \left( \frac{u m}{M} + \frac{v n}{N} \right) \right]
+	\label{eq:dft}
+\end{equation}
 
 
 \subsection{Expressões matemáticas em títulos e subtítulos: \texorpdfstring{$\boldsymbol{\gamma_x}$}{Gammax}}

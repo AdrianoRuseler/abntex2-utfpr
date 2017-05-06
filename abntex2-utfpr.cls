@@ -33,7 +33,7 @@
 \RequirePackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
 
 \RequirePackage{amsthm}
-\RequirePackage{tikz}
+\RequirePackage{tikz,pgfplots}
 \RequirePackage{datetime}
 
 
@@ -93,6 +93,37 @@
 \RequirePackage{tablefootnote}
 \RequirePackage{longtable}
 \RequirePackage{tocloft}
+
+
+
+\RequirePackage{pgfgantt}
+
+%Brazilian abbreviations  
+\def\pgfcalendarweekdayletter#1{%  
+	\ifcase#1S\or T\or Q\or Q\or S\or S\or D\fi%  
+}  
+
+%Brazilian abbreviations  
+\def\pgfcalendarweekdayshortname#1{%  
+	\ifcase#1Seg\or Ter\or Qua\or Qui\or Sex\or Sab\or Dom\fi%  
+} 
+
+%Brazilian abbreviations  
+\def\pgfcalendarweekdayname#1{%  
+	\ifcase#1Segunda\or Terça\or Quarta\or Quinta\or Sexta\or Sábado\or Domingo\fi%  
+} 
+
+%Brazilian abbreviations;  
+\def\pgfcalendarmonthname#1{%  
+	\ifcase#1 Dezembro \or Janeiro\or Fevereiro\or Março\or Abril\or Maio\or Junho\or Julho \or Agosto \or Setembro \or Outubro \or Novembro \or Dezembro\fi%  
+}  
+
+
+%Brazilian abbreviations;
+\def\pgfcalendarmonthshortname#1{%  
+	\ifcase#1 Dez \or Jan\or Fev\or Mar\or Abr\or Mai\or Jun\or Jul \or Ago \or Set \or Out \or Nov \or Dez\fi%  
+}  
+
 
 
 
